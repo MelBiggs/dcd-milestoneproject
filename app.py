@@ -1,10 +1,21 @@
 import os
-from app import create_app
-from app.config import Config
+from flask import Flask, render_template, redirect, request, url_for
 
 
-app = create_app(Config)
+from os import path
+if path.exists("env.py"):
+    import env
+
+app = Flask(__name__)
+
+#MONGODB_NAME = os.environ.get('MONGODB_NAME')
+app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
+
+@app.route('/')
+def hello_world():
+    return "Hello World"
 
 # execute app__init__.py
 if __name__ == "__main__":
-    app.run(host=os.getenv("IP"), port=os.getenv("PORT"))
+    print(os.environ.get('MONGO_URI'))
+    app.run(host='0.0.0.0', port=5000)

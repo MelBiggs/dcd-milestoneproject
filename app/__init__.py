@@ -1,4 +1,4 @@
-from flask import Flask 
+from flask import Flask
 from flask_pymongo import PyMongo
 from app.config import Config
 
