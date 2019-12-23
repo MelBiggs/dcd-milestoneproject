@@ -3,7 +3,7 @@ from flask_pymongo import PyMongo
 from app.config import Config
 
 
-mongo = PyMongo()
+mongo = PyMongo(app)
 
 
 def create_app(config_class=Config):
